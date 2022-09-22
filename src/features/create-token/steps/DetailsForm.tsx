@@ -1,20 +1,15 @@
-//- React Imports
-import { FC } from 'react';
+import { FC, useContext } from 'react';
+
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 
-//- Style Imports
-import styles from './DetailsForm.module.scss';
-import classNames from 'classnames/bind';
-
-//- Component Imports
-import { MediaInput, MediaType } from '@zero-tech/zui/components/MediaInput';
-
 import { Wizard } from '@zero-tech/zui/components';
+import { MediaInput, MediaType } from '@zero-tech/zui/components/MediaInput';
 import { WrappedInput } from '../../ui/WrappedInput/WrappedInput';
 
-//- Type Imports
-import { DetailsFormSubmit } from '../CreateToken.types';
+import styles from './DetailsForm.module.scss';
+import classNames from 'classnames/bind';
+import { CreateTokenFormContext } from '../CreateTokenFormContext';
 
 const validationSchema = Yup.object().shape({
 	name: Yup.string().required('This field is required'),
@@ -22,16 +17,12 @@ const validationSchema = Yup.object().shape({
 });
 
 export interface DetailsFormProps {
-	values: DetailsFormSubmit;
-	onSubmit: (values: DetailsFormSubmit) => void;
 	onClose: () => void;
 }
 
-export const DetailsForm: FC<DetailsFormProps> = ({
-	values,
-	onSubmit,
-	onClose,
-}) => {
+export const DetailsForm: FC<DetailsFormProps> = ({ onClose }) => {
+	const { details, onDetailsSubmit } = useContext(CreateTokenFormContext);
+
 	const handleMediaInputChange = (
 		mediaType: MediaType,
 		previewUrl: string,
@@ -49,8 +40,8 @@ export const DetailsForm: FC<DetailsFormProps> = ({
 
 	return (
 		<Formik
-			initialValues={values}
-			onSubmit={onSubmit}
+			initialValues={details}
+			onSubmit={onDetailsSubmit}
 			validationSchema={validationSchema}
 		>
 			{({ values, errors, touched, setFieldValue, submitForm }) => (

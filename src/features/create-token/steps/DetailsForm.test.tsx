@@ -1,13 +1,10 @@
-//- React Imports
 import React from 'react';
+
 import { fireEvent, render, waitFor, screen } from '@testing-library/react';
 
-//- Component Imports
-import { DetailsForm, DetailsFormProps } from './DetailsForm';
 import { ZUIProvider } from '@zero-tech/zui/ZUIProvider';
-
-//- Type Imports
-import { DetailsFormSubmit } from '../CreateToken.types';
+import { DetailsForm, DetailsFormProps } from './';
+import { DetailsFormSubmit } from '../';
 
 let onSubmit = jest.fn();
 
@@ -19,10 +16,10 @@ const DEFAULT_PROPS: DetailsFormProps = {
 		symbol: '',
 	},
 	onSubmit,
-	onClose: jest.fn()
+	onClose: jest.fn(),
 };
 
-describe('DetailsForm', () => {
+describe('<DetailsForm />', () => {
 	beforeEach(() => jest.resetAllMocks());
 
 	test('should not fire onSubmit when next button clicked and field values are invalid', async () => {
@@ -32,9 +29,11 @@ describe('DetailsForm', () => {
 			</ZUIProvider>,
 		);
 
-		fireEvent.click(screen.getByRole('button', {
-			name: 'Next'
-		}));
+		fireEvent.click(
+			screen.getByRole('button', {
+				name: 'Next',
+			}),
+		);
 
 		await waitFor(() => expect(onSubmit).not.toHaveBeenCalled());
 	});
@@ -52,9 +51,11 @@ describe('DetailsForm', () => {
 			</ZUIProvider>,
 		);
 
-		fireEvent.click(screen.getByRole('button', {
-			name: 'Next'
-		}));
+		fireEvent.click(
+			screen.getByRole('button', {
+				name: 'Next',
+			}),
+		);
 
 		await waitFor(() => expect(onSubmit).toHaveBeenCalled());
 	});

@@ -1,27 +1,24 @@
-//- React Imports
 import React from 'react';
+
 import { fireEvent, render, waitFor, screen } from '@testing-library/react';
 
-//- Component Imports
-import { TokenomicsForm, TokenomicsFormProps } from './TokenomicsForm';
 import { ZUIProvider } from '@zero-tech/zui/ZUIProvider';
-
-//- Type Imports
-import { TokenomicsFormSubmit } from '../CreateToken.types';
+import { TokenomicsForm, TokenomicsFormProps } from './';
+import { TokenomicsFormSubmit } from '../';
 
 let onSubmit = jest.fn();
 
 const DEFAULT_PROPS: TokenomicsFormProps = {
-	values : {
+	values: {
 		tokenCount: '',
 		initialTokenSupplyWalletAddress: '',
 		adminWalletAddress: '',
 	},
 	onSubmit,
-	onClose: jest.fn()
+	onClose: jest.fn(),
 };
 
-describe('TokenomicsForm', () => {
+describe('<TokenomicsForm />', () => {
 	beforeEach(() => jest.resetAllMocks());
 
 	test('should not fire onSubmit when next button clicked and field values are invalid', async () => {
@@ -31,9 +28,11 @@ describe('TokenomicsForm', () => {
 			</ZUIProvider>,
 		);
 
-		fireEvent.click(screen.getByRole('button', {
-			name: 'Next'
-		}));
+		fireEvent.click(
+			screen.getByRole('button', {
+				name: 'Next',
+			}),
+		);
 
 		await waitFor(() => expect(onSubmit).not.toHaveBeenCalled());
 	});
@@ -52,9 +51,11 @@ describe('TokenomicsForm', () => {
 			</ZUIProvider>,
 		);
 
-		fireEvent.click(screen.getByRole('button', {
-			name: 'Next'
-		}));
+		fireEvent.click(
+			screen.getByRole('button', {
+				name: 'Next',
+			}),
+		);
 
 		await waitFor(() => expect(onSubmit).toHaveBeenCalled());
 	});
