@@ -1,82 +1,30 @@
 //- React Imports
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 
 //- Component Imports
-import { DetailsForm } from './DetailsForm';
-import { GovernanceForm } from './GovernanceForm';
-import { TreasuryForm } from './TreasuryForm';
-import { DAOSummary } from './DAOSummary';
+import { DetailsForm } from './steps/DetailsForm';
+import { GovernanceForm } from './steps/GovernanceForm';
+import { TreasuryForm } from './steps/TreasuryForm';
+import { DAOSummary } from './steps/DAOSummary';
 
-//- Type Imports
-import {
-	DetailsFormSubmit,
-	GovernanceFormSubmit,
-	TreasuryFormSubmit,
-} from './CreateDAO.types';
-
-import { MediaType } from '@zero-tech/zui/components/MediaInput';
+//- Context Imports
+import { CreateDAOFormContext } from './CreateDAOFormContext';
 
 type CreateDAOBodyProps = {
-	stepId: string;
-	detailsFormValues: DetailsFormSubmit;
-	onDetailsSubmit: (values: DetailsFormSubmit) => void;
-	governanceFormValues: GovernanceFormSubmit;
-	onGovernanceSubmit: (values: GovernanceFormSubmit) => void;
-	treasuryFormValues: TreasuryFormSubmit;
-	onTreasurySubmit: (values: TreasuryFormSubmit) => void;
-	onMediaInputChange: (
-		mediaType: MediaType,
-		previewUrl: string,
-		image: Buffer,
-	) => void;
-	onLaunchSubmit: () => void;
 	onClose: () => void;
 };
 
-export const CreateDAOBody: FC<CreateDAOBodyProps> = ({
-	stepId,
-	detailsFormValues,
-	onDetailsSubmit,
-	governanceFormValues,
-	onGovernanceSubmit,
-	treasuryFormValues,
-	onTreasurySubmit,
-	onMediaInputChange,
-	onLaunchSubmit,
-	onClose,
-}) => {
+export const CreateDAOBody: FC<CreateDAOBodyProps> = ({ onClose }) => {
+	const { stepId } = useContext(CreateDAOFormContext);
+
 	switch (stepId) {
 		case 'details':
-			return (
-				<DetailsForm
-					values={detailsFormValues}
-					onSubmit={onDetailsSubmit}
-					onClose={onClose}
-				/>
-			);
+			return <DetailsForm onClose={onClose} />;
 		case 'governance':
-			return (
-				<GovernanceForm
-					values={governanceFormValues}
-					onSubmit={onGovernanceSubmit}
-					onClose={onClose}
-				/>
-			);
+			return <GovernanceForm onClose={onClose} />;
 		case 'treasury':
-			return (
-				<TreasuryForm
-					values={treasuryFormValues}
-					onSubmit={onTreasurySubmit}
-					onClose={onClose}
-				/>
-			);
+			return <TreasuryForm onClose={onClose} />;
 		case 'launch':
-			return (
-				<DAOSummary
-					onMediaInputChange={onMediaInputChange}
-					onSubmit={onLaunchSubmit}
-					onClose={onClose}
-				/>
-			);
+			return <DAOSummary onClose={onClose} />;
 	}
 };

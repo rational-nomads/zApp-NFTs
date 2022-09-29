@@ -1,5 +1,5 @@
 //- React Imports
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { Form, Formik } from 'formik';
 
 //- Style Imports
@@ -8,22 +8,18 @@ import styles from './DetailsForm.module.scss';
 //- Component Imports
 import { Wizard } from '@zero-tech/zui/components';
 
-//- Type Imports
-import { DetailsFormSubmit } from './CreateDAO.types';
+//- Context Imports
+import { CreateDAOFormContext } from '../CreateDAOFormContext';
 
 interface DetailsFormProps {
-	values: DetailsFormSubmit;
-	onSubmit: (values: DetailsFormSubmit) => void;
 	onClose: () => void;
 }
 
-export const DetailsForm: FC<DetailsFormProps> = ({
-	values,
-	onSubmit,
-	onClose,
-}) => {
+export const DetailsForm: FC<DetailsFormProps> = ({ onClose }) => {
+	const { details, onDetailsSubmit } = useContext(CreateDAOFormContext);
+
 	return (
-		<Formik initialValues={values} onSubmit={onSubmit}>
+		<Formik initialValues={details} onSubmit={onDetailsSubmit}>
 			{({ submitForm }) => (
 				<Form>
 					<p>Enter details content here...</p>

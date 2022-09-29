@@ -1,5 +1,5 @@
 //- React Imports
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 
 //- Style Imports
 import styles from './DAOSummary.module.scss';
@@ -7,24 +7,16 @@ import styles from './DAOSummary.module.scss';
 //- Component Imports
 import { Wizard } from '@zero-tech/zui/components';
 
-//- Type Imports
-import { MediaType } from '@zero-tech/zui/components/MediaInput';
+//- Context Imports
+import { CreateDAOFormContext } from '../CreateDAOFormContext';
 
 interface DAOSummaryProps {
-	onMediaInputChange: (
-		mediaType: MediaType,
-		previewUrl: string,
-		image: Buffer,
-	) => void;
-	onSubmit: () => void;
 	onClose: () => void;
 }
 
-export const DAOSummary: FC<DAOSummaryProps> = ({
-	onMediaInputChange,
-	onSubmit,
-	onClose,
-}) => {
+export const DAOSummary: FC<DAOSummaryProps> = ({ onClose }) => {
+	const { onLaunchSubmit } = useContext(CreateDAOFormContext);
+
 	return (
 		<div>
 			<p>Enter summary content here...</p>
@@ -33,7 +25,7 @@ export const DAOSummary: FC<DAOSummaryProps> = ({
 				isPrimaryButtonActive
 				isSecondaryButtonActive
 				primaryButtonText="Confirm"
-				onClickPrimaryButton={onSubmit}
+				onClickPrimaryButton={onLaunchSubmit}
 				onClickSecondaryButton={onClose}
 			/>
 		</div>

@@ -1,32 +1,28 @@
 //- React Imports
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { Form, Formik } from 'formik';
 
 //- Style Imports
-import styles from './TreasuryForm.module.scss';
+import styles from './GovernanceForm.module.scss';
 
 //- Component Imports
 import { Wizard } from '@zero-tech/zui/components';
 
-//- Type Imports
-import { TreasuryFormSubmit } from './CreateDAO.types';
+//- Context Imports
+import { CreateDAOFormContext } from '../CreateDAOFormContext';
 
-interface TreasuryFormProps {
-	values: TreasuryFormSubmit;
-	onSubmit: (values: TreasuryFormSubmit) => void;
+interface GovernanceFormProps {
 	onClose: () => void;
 }
 
-export const TreasuryForm: FC<TreasuryFormProps> = ({
-	values,
-	onSubmit,
-	onClose,
-}) => {
+export const GovernanceForm: FC<GovernanceFormProps> = ({ onClose }) => {
+	const { governance, onGovernanceSubmit } = useContext(CreateDAOFormContext);
+
 	return (
-		<Formik initialValues={values} onSubmit={onSubmit}>
+		<Formik initialValues={governance} onSubmit={onGovernanceSubmit}>
 			{({ submitForm }) => (
 				<Form>
-					<p>Enter treasury content here...</p>
+					<p>Enter governance content here...</p>
 					<Wizard.Buttons
 						className={styles.Footer}
 						isPrimaryButtonActive
