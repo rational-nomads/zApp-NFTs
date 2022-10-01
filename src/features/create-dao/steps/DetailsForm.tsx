@@ -95,7 +95,7 @@ export const DetailsForm: FC<DetailsFormProps> = ({ onClose }) => {
 							/>
 						</div>
 					</div>
-					<div>
+					<div className={styles.Description}>
 						<WrappedInput
 							label="What is the description of your DAO?"
 							value={values.description}
