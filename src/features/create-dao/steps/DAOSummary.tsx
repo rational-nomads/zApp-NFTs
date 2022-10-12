@@ -2,11 +2,11 @@ import { FC, useContext, useState } from 'react';
 
 import { Wizard } from '@zero-tech/zui/components';
 import { MediaInput, MediaType } from '@zero-tech/zui/components/MediaInput';
-import { CreateDAOFormContext } from '../';
-import { DAOSummaryField } from './';
+import { CreateDAOFormContext } from '..';
+import { DAOSummaryField } from '.';
 
 import styles from './DAOSummary.module.scss';
-import { truncateAddress } from 'lib/util/domains/domains';
+import { truncateAddress } from '../../../lib/util/domains/domains';
 
 export interface DAOSummaryProps {
 	onClose: () => void;
@@ -56,33 +56,44 @@ export const DAOSummary: FC<DAOSummaryProps> = ({ onClose }) => {
 				</div>
 				<div className={styles.Column}>
 					<h2 className={styles.Heading}>Summary</h2>
-					<div className={styles.Row}>
+					<div className={styles.Row_Summary}>
 						<DAOSummaryField
-							className={styles.Name}
+							className={styles.Summary}
 							label="DAO Name"
 							value={details.name}
 						/>
-						<DAOSummaryField label="zNA Address" value={details.znaAddress} />
+						<DAOSummaryField 
+							label="zNA Address" 
+							// value={details.znaAddress} 
+							value='0://meow.dao'
+							className={styles.Summary_Second}
+							/>
 					</div>
-					<div className={styles.Row}>
+					<div className={styles.Row_Summary}>
 						<DAOSummaryField
 							label="Voting Process"
-							value={governance.votingProcess}
+							// value={governance.votingProcess}
+							value='Majority'
+							className={styles.Summary}
 						/>
 						<DAOSummaryField
 							label="Gnosis Safe"
 							value={truncateAddress(treasury.gnosisSafe)}
+							className={styles.Summary_Second}
 						/>
 					</div>
-					<div className={styles.Row}>
+					<div className={styles.Row_Summary}>
 						<DAOSummaryField
-							className={styles.InitialTokenSupplyWalletAddress}
-							label="VotingThreshold"
-							value={governance.votingThreshold}
-						/>
+							className={styles.Summary}
+							label="Voting Threshold"
+							// value={governance.votingThreshold}
+							value="51%"
+							/>
 						<DAOSummaryField
 							label="Voting Period"
-							value={governance.votingPeriod}
+							// value={governance.votingPeriod}
+							value='7 Days'
+							className={styles.Summary_Second}
 						/>
 					</div>
 				</div>
@@ -90,7 +101,16 @@ export const DAOSummary: FC<DAOSummaryProps> = ({ onClose }) => {
 			<DAOSummaryField
 				label="Description"
 				value={details.description}
+				className={styles.Text_Description}
 			/>
+			<div className={styles.Text_Confirmation}>
+				<div className={styles.Text_Bold}>Are you ready to launch your DAO?</div>
+				<div className={styles.Text}>
+					DAO details cannot be changed once it has been launched,
+					<br/>
+					only the avatar image can be changed.
+				</div>
+			</div>
 			<Wizard.Buttons
 				className={styles.Footer}
 				isPrimaryButtonActive

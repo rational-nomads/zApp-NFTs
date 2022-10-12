@@ -6,7 +6,7 @@ import { Form, Formik } from 'formik';
 import { MediaInput, MediaType } from '@zero-tech/zui/components/MediaInput';
 import { Wizard } from '@zero-tech/zui/components';
 import { WrappedInput } from '../../ui/WrappedInput/WrappedInput';
-import { CreateDAOFormContext } from '../';
+import { CreateDAOFormContext } from '..';
 
 import styles from './DetailsForm.module.scss';
 import classNames from 'classnames/bind';

@@ -19,16 +19,18 @@ export const CreateDAOForm: FC<CreateDAOFormProps> = ({
 }) => {
 	const { account } = useWeb3();
 
-	const content = account ? (
+	// const content = account ? 
+	return (
 		<CreateDAOFormContextProvider>
 			<Wizard.Container className={styles.Container}>
 				<CreateDAOHeader subtitle={domainName} onClose={onClose} />
 				<CreateDAOBody onClose={onClose} />
 			</Wizard.Container>
 		</CreateDAOFormContextProvider>
-	) : (
-		<ConnectWallet message={'Connect your wallet to create a DAO.'} />
-	);
+	) 
+	// : (
+	// 	<ConnectWallet message={'Connect your wallet to create a DAO.'} />
+	// );
 
-	return content;
+	// return content;
 };

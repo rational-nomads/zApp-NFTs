@@ -1,3 +1,66 @@
+.Row {
+	display: flex;
+	margin-top: 0.625rem;
+	width: 328px;
+	&_Summary {
+		display: flex;
+		margin-top: 0;
+	}
+	.Column {
+		display: flex;
+		flex-direction: column;
+		
+		.Heading {
+			margin-top: 0;
+			margin-bottom: 16px;
+		}
+		
+		.MediaInput {
+			height: 200px;
+			width: 200px;
+			margin-right: 2rem;
+			border-radius: 8px !important;
+			border: solid greenyellow 2px;
+		}
+		
+		.Summary {
+			margin-right: 1.3rem;
+			width: 8rem;
+			height: 40px;
+			margin-bottom: 16px;
+		}
+		&_Second {
+			line-height: 24px;
+		}
+	}
+}
+
+.Text {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 24px;
+	&_Bold {
+		font-weight: 700;
+	}
+	&_Confirmation {
+		color: #F58C61;
+		text-align: center;
+		width: 560px;
+		height: 72px;
+		border-top: solid 1px #232323;
+		padding: 24px 0px;
+		margin-top: 20px;
+		margin-bottom: 16px;
+	}
+	&_Description {
+		margin-top: 24px;
+		margin-bottom: 0px;
+		line-height: 24px;
+	}
+}
+
 .Footer {
 	margin-top: 1rem;
 }

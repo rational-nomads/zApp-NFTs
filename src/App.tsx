@@ -12,6 +12,7 @@ import { getDomainId } from './lib/util/domains/domains';
 
 import classNames from 'classnames/bind';
 import styles from './App.module.scss';
+import { CreateDAOButton } from './features/create-dao';
 
 const cx = classNames.bind(styles);
 
@@ -34,6 +35,7 @@ export const App: FC<AppProps> = ({ provider, route }) => {
 				isRoot: isRoot,
 			})}
 		>
+		<CreateDAOButton domainName={'nfts'} />
 			<Switch>
 				{!isNFTView && (
 					<Domains
