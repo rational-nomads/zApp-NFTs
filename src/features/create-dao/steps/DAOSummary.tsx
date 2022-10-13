@@ -64,16 +64,14 @@ export const DAOSummary: FC<DAOSummaryProps> = ({ onClose }) => {
 						/>
 						<DAOSummaryField 
 							label="zNA Address" 
-							// value={details.znaAddress} 
-							value='0://meow.dao'
+							value={details.znaAddress} 
 							className={styles.Summary_Second}
 							/>
 					</div>
 					<div className={styles.Row_Summary}>
 						<DAOSummaryField
 							label="Voting Process"
-							// value={governance.votingProcess}
-							value='Majority'
+							value={governance.votingProcess}
 							className={styles.Summary}
 						/>
 						<DAOSummaryField
@@ -86,13 +84,11 @@ export const DAOSummary: FC<DAOSummaryProps> = ({ onClose }) => {
 						<DAOSummaryField
 							className={styles.Summary}
 							label="Voting Threshold"
-							// value={governance.votingThreshold}
-							value="51%"
+							value={governance.votingThreshold}
 							/>
 						<DAOSummaryField
 							label="Voting Period"
-							// value={governance.votingPeriod}
-							value='7 Days'
+							value={governance.votingPeriod}
 							className={styles.Summary_Second}
 						/>
 					</div>
