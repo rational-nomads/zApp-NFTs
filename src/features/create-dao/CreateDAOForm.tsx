@@ -26,7 +26,7 @@ export const CreateDAOForm: FC<CreateDAOFormProps> = ({
 				<CreateDAOBody onClose={onClose} />
 			</Wizard.Container>
 		</CreateDAOFormContextProvider>
-	)	: (
+	) : (
 		<ConnectWallet message={'Connect your wallet to create a DAO.'} />
 	);
 

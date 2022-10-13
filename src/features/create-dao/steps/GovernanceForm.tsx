@@ -3,7 +3,7 @@ import { FC, useContext } from 'react';
 import { Form, Formik } from 'formik';
 
 import { Wizard } from '@zero-tech/zui/components';
-import { CreateDAOFormContext } from '..';
+import { CreateDAOFormContext } from '../';
 
 import styles from './GovernanceForm.module.scss';
 

@@ -2,8 +2,8 @@ import { FC, useContext, useState } from 'react';
 
 import { Wizard } from '@zero-tech/zui/components';
 import { MediaInput, MediaType } from '@zero-tech/zui/components/MediaInput';
-import { CreateDAOFormContext } from '..';
-import { DAOSummaryField } from '.';
+import { CreateDAOFormContext } from '../';
+import { DAOSummaryField } from './';
 
 import styles from './DAOSummary.module.scss';
 import { truncateAddress } from '../../../lib/util/domains/domains';
