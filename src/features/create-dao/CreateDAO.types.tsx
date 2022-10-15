@@ -1,9 +1,11 @@
+import { IconLightning2 } from '@zero-tech/zui/components/Icons';
 import {
 	Step,
 	ToggleOptions,
 	MediaType,
 	DropdownItem,
 } from '@zero-tech/zui/components';
+import { DropdownIconLabel } from '../ui/DropdownIconLabel/DropdownIconLabel';
 
 export const steps: Step[] = [
 	{
@@ -49,12 +51,12 @@ export const getVotingPeriodItems = (setFieldValue: any): DropdownItem[] => [...
 export const getVotingSystemItems = (setFieldValue: any): DropdownItem[] => [
 	{
 		id: 'snapshot',
-		label: 'Snapshot',
+		label: <DropdownIconLabel icon={<IconLightning2 />} label="Snapshot" />,
 		onSelect: (e: any) => setFieldValue('votingSystem', "Snapshot"),
 	},
 	{
 		id: 'polygon',
-		label: 'Polygon',
+		label: "Polygon",
 		onSelect: (e: any) => setFieldValue('votingSystem', "Polygon"),
 	},
 	{
