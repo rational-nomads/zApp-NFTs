@@ -1,0 +1,42 @@
+import { FC } from 'react';
+
+import { InfoTooltip } from '@zero-tech/zui/components/InfoTooltip';
+import { DropdownItem, DropdownMenu, Input } from '@zero-tech/zui/components';
+
+import styles from './WrappedDropdownMenu.module.scss';
+
+export type WrappedDropdownMenuProps = {
+	className?: string;
+	items: DropdownItem[];
+	value: string;
+	label: string;
+	placeholder: string;
+	info: string;
+	hasError: boolean;
+	helperText: string;
+};
+
+export const WrappedDropdownMenu: FC<WrappedDropdownMenuProps> = ({
+	className = '',
+	items = [],
+	value,
+	label,
+	placeholder,
+	info,
+	hasError,
+	helperText,
+}) => {
+	const trigger = (
+		<Input type="text" placeholder={placeholder} value={value} onChange={() => {}} error={hasError} helperText={helperText} />
+	);
+
+	return (
+		<div className={className}>
+			<div className={styles.Container}>
+				<p className={styles.Label}>{label}</p>
+				<InfoTooltip content={info} />
+			</div>
+			<DropdownMenu className={styles.DropdownMenu} trigger={trigger} items={items} />
+		</div>
+	);
+}
