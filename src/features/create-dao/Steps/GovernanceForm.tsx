@@ -33,7 +33,7 @@ const validationSchema = Yup.object().shape({
 	),
 });
 
-interface GovernanceFormProps {
+export interface GovernanceFormProps {
 	onClose: () => void;
 }
 
@@ -93,9 +93,10 @@ export const GovernanceForm: FC<GovernanceFormProps> = ({ onClose }) => {
 						onChange={(value) => setFieldValue('daoTokenAddress', value)}
 					/>
 					<WrappedInput
+						type="number"
 						label="What percentage will be your voting threshold?"
 						value={values.votingThreshold}
-						placeholder="Enter voting threshold (%)..."
+						placeholder="Enter voting threshold..."
 						info="Points for creativity."
 						hasError={touched.votingThreshold && !!errors.votingThreshold}
 						helperText={touched.votingThreshold && errors.votingThreshold}

@@ -1,8 +1,14 @@
 .Container {
-	display: flex;
-	justify-content: space-between;
+	.LabelContainer {
+		display: flex;
+		justify-content: space-between;
 
-	.Label {
-		margin-left: 1.375rem;
+		.Label {
+			margin-left: 1.375rem;
+		}
+	}
+
+	button {
+		width: 100% !important;
 	}
 }

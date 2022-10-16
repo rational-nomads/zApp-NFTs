@@ -1,11 +1,11 @@
 import { IconLightning2 } from '@zero-tech/zui/components/Icons';
+import { DropdownIconLabel } from '../ui/DropdownIconLabel/DropdownIconLabel';
 import {
 	Step,
 	ToggleOptions,
 	MediaType,
 	DropdownItem,
 } from '@zero-tech/zui/components';
-import { DropdownIconLabel } from '../ui/DropdownIconLabel/DropdownIconLabel';
 
 export const steps: Step[] = [
 	{
@@ -37,32 +37,33 @@ export const VOTING_PROCESS_OPTIONS: ToggleOptions = [
 	},
 ];
 
-export const getVotingPeriodItems = (setFieldValue: any): DropdownItem[] => [...Array(7)].map((_, i) => {
-	const day = i + 1;
-	const dayString = i === 0 ? "1 Day" : `${day} Days`
+export const getVotingPeriodItems = (setFieldValue: any): DropdownItem[] =>
+	[...Array(7)].map((_, i) => {
+		const day = i + 1;
+		const dayString = i === 0 ? '1 Day' : `${day} Days`;
 
-	return {
-		id: day.toString(),
-		label: dayString,
-		onSelect: () => setFieldValue('votingPeriod', dayString)
-	};
-});
+		return {
+			id: day.toString(),
+			label: dayString,
+			onSelect: () => setFieldValue('votingPeriod', dayString),
+		};
+	});
 
 export const getVotingSystemItems = (setFieldValue: any): DropdownItem[] => [
 	{
 		id: 'snapshot',
 		label: <DropdownIconLabel icon={<IconLightning2 />} label="Snapshot" />,
-		onSelect: (e: any) => setFieldValue('votingSystem', "Snapshot"),
+		onSelect: () => setFieldValue('votingSystem', 'Snapshot'),
 	},
 	{
 		id: 'polygon',
-		label: "Polygon",
-		onSelect: (e: any) => setFieldValue('votingSystem', "Polygon"),
+		label: 'Polygon',
+		onSelect: () => setFieldValue('votingSystem', 'Polygon'),
 	},
 	{
 		id: 'starkware',
 		label: 'Starkware (coming soon)',
-		onSelect: (e: any) => setFieldValue('votingSystem', "Starkware"),
+		onSelect: () => setFieldValue('votingSystem', 'Starkware'),
 	},
 ];
 

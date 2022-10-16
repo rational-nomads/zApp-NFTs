@@ -5,6 +5,7 @@ import { IconChevronDown } from '@zero-tech/zui/components/Icons';
 import { DropdownItem, DropdownMenu, Input } from '@zero-tech/zui/components';
 
 import styles from './WrappedDropdownMenu.module.scss';
+import classNames from 'classnames';
 
 export type WrappedDropdownMenuProps = {
 	className?: string;
@@ -32,8 +33,8 @@ export const WrappedDropdownMenu: FC<WrappedDropdownMenuProps> = ({
 	);
 
 	return (
-		<div className={className}>
-			<div className={styles.Container}>
+		<div className={classNames(styles.Container, className)}>
+			<div className={styles.LabelContainer}>
 				<p className={styles.Label}>{label}</p>
 				<InfoTooltip content={info} />
 			</div>
