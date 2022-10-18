@@ -54,7 +54,7 @@ describe('<TreasuryForm />', () => {
 			</ZUIProvider>
 		);
 
-		fireEvent.blur(screen.getByPlaceholderText(/Gnosis Safe/i));
+		fireEvent.blur(screen.getByPlaceholderText(/Enter gnosis safe address.../i));
 		fireEvent.click(
 			screen.getByRole('button', {
 				name: 'Next',
@@ -62,7 +62,7 @@ describe('<TreasuryForm />', () => {
 		);
 
 		await waitFor(() =>
-			expect(screen.getByText('Gnosis Safe is required')).not.toBe(
+			expect(screen.getByText('The gnosis safe field is required.')).not.toBe(
 				null,
 			),
 		);
@@ -80,7 +80,7 @@ describe('<TreasuryForm />', () => {
 		const user = userEvent.setup();
 
 		await user.type(
-			screen.getByPlaceholderText(/Gnosis Safe/i),
+			screen.getByPlaceholderText(/Enter gnosis safe address.../i),
 			'0x29D7d1dd5B6f9C864d9db560D72a247c178aE86B',
 		);
 		

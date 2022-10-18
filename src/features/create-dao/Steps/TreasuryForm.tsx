@@ -4,14 +4,14 @@ import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 
 import { Wizard } from '@zero-tech/zui/components';
+import { WrappedInput } from '../../ui/WrappedInput/WrappedInput';
 import { CreateDAOFormContext } from '../';
 
 import styles from './TreasuryForm.module.scss';
-import { WrappedInput } from '../../ui/WrappedInput/WrappedInput';
 import classNames from 'classnames/bind';
 
 const validationSchema = Yup.object().shape({
-	gnosisSafe: Yup.string().required('Gnosis Safe is required'),
+	gnosisSafe: Yup.string().required('The gnosis safe field is required.'),
 });
 
 export interface TreasuryFormProps {
@@ -35,7 +35,7 @@ export const TreasuryForm: FC<TreasuryFormProps> = ({ onClose }) => {
 						<WrappedInput
 							label="What Ethereum address do you want all of the DAO’s funds to be held in?"
 							value={values.gnosisSafe}
-							placeholder="Gnosis Safe"
+							placeholder="Enter gnosis safe address..."
 							info="This is a smart contract wallet that allows users to store Ether and ERC-20 tokens securely and interact with the decentralized web. It requires minimum number of people to approve a transaction before it can occur."
 							hasError={touched.gnosisSafe && !!errors.gnosisSafe}
 							helperText={touched.gnosisSafe && errors.gnosisSafe}
